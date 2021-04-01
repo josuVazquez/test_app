@@ -1,0 +1,38 @@
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
+@Component({
+  selector: 'app-login',
+  templateUrl: './login.page.html',
+  styleUrls: ['./login.page.scss'],
+})
+export class LoginPage implements OnInit {
+
+  //#region "CreaLoginForm"
+  loginForm: FormGroup = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.email]),
+    pass: new FormControl('', [Validators.required, Validators.minLength(5)]),
+    remind: new FormControl()
+  });
+  //#endregion "CreaLoginForm"
+
+  submitted: boolean = false;
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+  submitLogin() {
+    this.submitted = true;
+    this.loginForm.controls.email.markAsTouched();
+    this.loginForm.controls.pass.markAsTouched();
+    if(this.loginForm.valid) {
+      console.log('OK');
+    }
+  }
+
+  isFieldinValid(field: string) {
+    return !this.loginForm.get(field).valid && this.submitted;
+  }
+
+}
