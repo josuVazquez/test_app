@@ -21,55 +21,55 @@ ion-content {
 
     width: 100%;
     height: 100%;
-}
 
-.login-header {
-    @include login-size();
-}
+    .login-header {
+        @include login-size();
+        .logo {
+            @include center-item();
+            width: 10rem;
+            height: 10rem;
+            padding: 1rem;
+        }
 
-.login-title {
-    text-align: center;
-}
-
-.logo {
-    @include center-item();
-    width: 10rem;
-    height: 10rem;
-    padding: 1rem;
-}
-
-.login-form {
-    @include login-size();
-    background-color: #ffffff;
-
-    .error {
-        color: var(--ion-color-danger);
-        padding: 0.8rem;
-        margin-left: 1rem;
+        .login-title {
+            text-align: center;
+        }
     }
-}
 
-.item-margin {
-    margin: {
-        right: 1rem;
-        left: 1rem;
-        top: 1rem;
+    .login-form {
+        @include login-size();
+        background-color: #ffffff;
+    
+        .error {
+            color: var(--ion-color-danger);
+            padding: 0.8rem;
+            margin-left: 1rem;
+        }
+
+        .item-margin {
+            margin: {
+                right: 1rem;
+                left: 1rem;
+                top: 1rem;
+            }
+        }
+
+        .icon-input {
+            float: left;
+        }
+
+        .toggle-item {
+            margin: {
+                left: 1rem;
+                top: 1rem;
+            }
+
+            .toggle {
+                margin-left:auto;
+            }
+        }
     }
-}
 
-.toggle-margin {
-    margin: {
-        left: 1rem;
-        top: 1rem;
-    }
-}
-
-.icon-input {
-    float: left;
-}
-
-.toggle {
-    margin-left:auto;
 }
 
 .register {
