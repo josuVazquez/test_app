@@ -1,23 +1,16 @@
-ion-content{
-    --background: #fff url('../../../assets/img/background.jpg') no-repeat center center / cover;
+@mixin center-item {
+    margin-left: auto;
+    margin-right: auto;
 }
 
-ion-item {
-    padding: 10px;
-    margin-right: 15px;
-    margin-left: 15px;
-
-    --padding-end: 0px;
-    --inner-padding-end: 0px;
+@mixin login-size {
+    width: 60%;
+    max-width: 60rem;
+    min-width: 15rem;
 }
 
-ion-img {
-    width: 150px;
-    height: 150px;
-}
-
-ion-icon {
-    float: left;
+ion-content {
+    --background: transparent url('../../../assets/img/background.jpg') no-repeat center center / cover;
 }
 
 .login-box {
@@ -30,70 +23,100 @@ ion-icon {
     height: 100%;
 }
 
+.login-header {
+    @include login-size();
+}
+
+.login-title {
+    text-align: center;
+}
+
+.logo {
+    @include center-item();
+    width: 10rem;
+    height: 10rem;
+    padding: 1rem;
+}
+
 .login-form {
-    width: 500px;
+    @include login-size();
     background-color: #ffffff;
+
+    .error {
+        color: var(--ion-color-danger);
+        padding: 0.8rem;
+        margin-left: 1rem;
+    }
 }
 
-.center-item{
-    margin-left: auto;
-    margin-right: auto;
+.item-margin {
+    margin: {
+        right: 1rem;
+        left: 1rem;
+        top: 1rem;
+    }
 }
 
-.register {
-    position: absolute;
-    bottom: 0;
-    left: 0;
+.toggle-margin {
+    margin: {
+        left: 1rem;
+        top: 1rem;
+    }
 }
 
-.error {
-    color: var(--ion-color-danger);
-    padding: 10px;
-    margin-left: 15px;
+.icon-input {
+    float: left;
 }
 
 .toggle {
     margin-left:auto;
 }
 
+.register {
+    @include center-item();
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
 @media all and (min-width: 960px) {
-    .button-item {
-        button{
-            width: 200px;
-            height: 100%;
-            color: black;
-            background: transparent;
-            border: 2px solid var(--ion-color-primary);
-            border-radius: 30px;
-        }
+    .login-header {
+        background-color: #ffffff;
     }
 
-    .login-header {
-        width: 500px;
-        background-color: #ffffff;
+    .button-submit {
+        @include center-item();
+        margin: {
+            bottom: 1rem;
+            top: 1rem;
+        }
+        width: 12rem;
+        height: 3rem;
+        color: black;
+        background: transparent;
+        border: 0.1rem solid var(--ion-color-primary);
+        border-radius: 2rem;
     }
 }
 
 @media not all and (min-width: 960px) {
-    .title {
+    .login-title {
         display: none;
-    }
-
-    .login-header {
-        ion-item {
-            --ion-background-color: transparent !important;
-            --ion-border-color: transparent !important;
-        }
     }
     
     .button-item {
-        margin: unset;
-        padding: unset;
-        button {
-            width: 100%;
-            height: 100%;
-            color: white;
-            background-color: var(--ion-color-primary);
-        }
+        --inner-padding-end: 0px ;
     }
+
+    .button-submit {
+        @include center-item();
+        width: 100%;
+        height: 100%;
+        color: white;
+        background-color: var(--ion-color-primary);
+    }
+}
+
+.ion-update {
+    --highlight-background: var(--highlight-color-focused);
 }

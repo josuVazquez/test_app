@@ -1,46 +1,40 @@
-<ion-content>
+<ion-content class="content">
   <!-- Login box-->
   <div class="login-box">
 
     <div class="login-header ">
-      <ion-item lines="none">
-        <ion-img class="logo center-item" src="assets/img/logo.jpg"></ion-img>
-      </ion-item>
+      <ion-img class="logo" src="assets/img/logo.jpg"></ion-img>
 
-      <ion-item class="title" lines="none">
-        <ion-text class="center-item">
-          <h1>Prueba técnica</h1>
-        </ion-text>
-      </ion-item>
-
+        <h2 class="login-title">Prueba técnica</h2>
     </div>
 
     <div class="login-form">
       <form [formGroup]="loginForm" (ngSubmit)="submitLogin()">
-        
-        <ion-item>
-          <ion-icon name="person-outline" slot="start"></ion-icon>
+
+        <!-- ion-update is a workaround becouse Ionic Reactive form was triggering invalid on input focus  -->
+        <ion-item class="item-margin" [class.ion-update]="!submitted">
+          <ion-icon class="icon-input" name="person-outline" slot="start"></ion-icon>
           <ion-input formControlName="email" type="email" required placeholder="Email"></ion-input>
         </ion-item>
-        <div *ngIf="isFieldinValid('pass')" class="error">
+        <div *ngIf="isFieldinValid('email')" class="error">
           El email no es valido
         </div>
 
-        <ion-item >
-          <ion-icon name="lock-open-outline" slot="start"></ion-icon>
+        <ion-item class="item-margin" [class.ion-update]="!submitted">
+          <ion-icon class="icon-input" name="lock-open-outline" slot="start"></ion-icon>
           <ion-input formControlName="pass" type="password" required placeholder="Contraseña"></ion-input>
         </ion-item>
         <div *ngIf="isFieldinValid('pass')" class="error">
             La contraseña tiene que tener al menos 5 caracteres
         </div>
 
-        <ion-item>
+        <ion-item class="toggle-margin" lines="none">
           <span>Recordar</span>
           <ion-toggle class="toggle" formControlName="remind"></ion-toggle>
         </ion-item>
 
         <ion-item lines="none" class="ion-no-padding button-item">
-          <button class="center-item" type="submit" color="primary" expand="block">Acceder</button>
+          <button class="button-submit" type="submit" color="primary" expand="block">Acceder</button>
         </ion-item>
       </form>
     </div>

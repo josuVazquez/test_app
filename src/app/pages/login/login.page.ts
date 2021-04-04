@@ -10,10 +10,20 @@ export class LoginPage implements OnInit {
 
   //#region "CreaLoginForm"
   loginForm: FormGroup = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    pass: new FormControl('', [Validators.required, Validators.minLength(5)]),
-    remind: new FormControl()
-  });
+    email: new FormControl('', Validators.compose([
+      Validators.required, 
+      Validators.email])
+    ),
+    pass: new FormControl('', Validators.compose([
+      Validators.required, 
+      Validators.minLength(5)])
+    ),
+    remind: new FormControl(false)
+  }, 
+  {
+    'updateOn': 'submit'
+  }
+  );
   //#endregion "CreaLoginForm"
 
   submitted: boolean = false;
